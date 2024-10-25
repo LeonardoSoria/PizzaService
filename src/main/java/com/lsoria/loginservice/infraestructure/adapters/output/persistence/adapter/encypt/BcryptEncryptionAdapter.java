@@ -1,4 +1,4 @@
-package com.lsoria.loginservice.infraestructure.adapters.output.persistence;
+package com.lsoria.loginservice.infraestructure.adapters.output.persistence.adapter.encypt;
 
 import com.lsoria.loginservice.application.port.output.EncryptionServicePort;
 import org.springframework.security.crypto.bcrypt.BCrypt;

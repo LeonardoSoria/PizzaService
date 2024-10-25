@@ -6,22 +6,19 @@ import com.lsoria.loginservice.domain.model.User;
 import com.lsoria.loginservice.application.port.output.EncryptionServicePort;
 import com.lsoria.loginservice.application.port.output.LoggerServicePort;
 import com.lsoria.loginservice.application.port.output.UserOutputPort;
-import org.springframework.stereotype.Service;
+import lombok.AllArgsConstructor;
+import lombok.Setter;
 
 import java.util.Optional;
 
-@Service
+@AllArgsConstructor
 public class UserService implements LoginUserUseCase, RegisterUserUseCase {
 
     private final UserOutputPort userOutputPort;
-    private final EncryptionServicePort encryptionService;
-    private final LoggerServicePort loggerService;
-
-    public UserService(UserOutputPort userOutputPort, EncryptionServicePort encryptionService, LoggerServicePort loggerService) {
-        this.userOutputPort = userOutputPort;
-        this.encryptionService = encryptionService;
-        this.loggerService = loggerService;
-    }
+    @Setter
+    private EncryptionServicePort encryptionService;
+    @Setter
+    private LoggerServicePort loggerService;
 
     @Override
     public User loginUser(String username, String password) {

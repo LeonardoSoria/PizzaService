@@ -1,23 +1,18 @@
-package com.lsoria.loginservice.infraestructure.adapters.output.persistence;
+package com.lsoria.loginservice.infraestructure.adapters.output.persistence.adapter;
 
 import com.lsoria.loginservice.domain.model.User;
 import com.lsoria.loginservice.application.port.output.UserOutputPort;
 import com.lsoria.loginservice.infraestructure.adapters.output.persistence.entity.UserEntity;
 import com.lsoria.loginservice.infraestructure.adapters.output.persistence.mapper.UserPersistenceMapper;
 import com.lsoria.loginservice.infraestructure.adapters.output.persistence.repository.UserRepository;
-import org.springframework.stereotype.Repository;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
-@Repository
+@RequiredArgsConstructor
 public class UserPersistenceAdapter implements UserOutputPort {
     private final UserRepository userRepository;
     private final UserPersistenceMapper userPersistenceMapper;
-
-    public UserPersistenceAdapter(UserRepository userRepository, UserPersistenceMapper userPersistenceMapper) {
-        this.userRepository = userRepository;
-        this.userPersistenceMapper = userPersistenceMapper;
-    }
 
     @Override
     public User saveUser(User user) {

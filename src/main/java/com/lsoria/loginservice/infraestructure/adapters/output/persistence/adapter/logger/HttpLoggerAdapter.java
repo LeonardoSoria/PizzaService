@@ -1,4 +1,4 @@
-package com.lsoria.loginservice.infraestructure.adapters.output.persistence;
+package com.lsoria.loginservice.infraestructure.adapters.output.persistence.adapter.logger;
 
 import com.lsoria.loginservice.application.port.output.LoggerServicePort;
 import org.springframework.stereotype.Component;
