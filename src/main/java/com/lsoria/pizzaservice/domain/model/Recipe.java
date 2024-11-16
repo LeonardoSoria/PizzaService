@@ -13,7 +13,7 @@ public class Recipe {
 
     private Long id;
     private String name;
-    private List<Ingredient> defaultIngredients;
+    private List<Ingredient> ingredients;
 
     public Recipe(Long id) {
         this.id = id;

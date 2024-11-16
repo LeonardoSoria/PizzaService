@@ -12,7 +12,6 @@ import java.util.List;
 public class PizzaRequest {
 
     private Long pizzaRecipeId;
-    private String pizzaName;
     private List<IngredientRequest> ingredients;
     private int quantity;
 }

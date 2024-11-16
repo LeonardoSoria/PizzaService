@@ -24,7 +24,7 @@ public class RecipeEntity {
     @OneToMany(mappedBy = "recipe")
     private List<PizzaEntity> pizzas;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "recipe_ingredient",
             joinColumns = @JoinColumn(name = "recipe_id"),

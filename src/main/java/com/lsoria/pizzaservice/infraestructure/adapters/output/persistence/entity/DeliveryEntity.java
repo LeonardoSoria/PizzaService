@@ -19,6 +19,7 @@ public class DeliveryEntity {
     @Id @GeneratedValue
     private Long id;
     private String address;
+    private double price;
     @OneToOne(mappedBy = "delivery")
     private OrderEntity order;
 }

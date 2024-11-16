@@ -11,4 +11,5 @@ public class Delivery {
 
     private Long id;
     private String address;
+    private double price;
 }

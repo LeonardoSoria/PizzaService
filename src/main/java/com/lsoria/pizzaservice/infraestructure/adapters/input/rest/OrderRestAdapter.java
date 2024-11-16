@@ -18,14 +18,12 @@ public class OrderRestAdapter {
 
     private final OrderUseCase registerUserUseCase;
 
-    @PostMapping("/createOrder")
+    @PostMapping("/create")
     public ResponseEntity<OrderResponse> createOrder(@RequestBody @Valid OrderRequest orderRequest) {
         OrderRestMapper orderMapper = new OrderRestMapper();
         Order order = orderMapper.toOrder(orderRequest);
-        order = this
-        // User user = this.userRestMapper.toUser(registerUserRequest);
-        // user = this.registerUserUseCase.registerUser(user);
-        return new ResponseEntity<>(this.orderRestMapper.(orderRequest), HttpStatus.CREATED);
+        order = this.registerUserUseCase.registerOrder(order);
+        return new ResponseEntity<>(orderMapper.toOrderResponse(order), HttpStatus.CREATED);
     }
 }
 
