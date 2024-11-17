@@ -1,3 +1,13 @@
+# Project Setup and Testing
+
+To get started with the project, please follow the instructions below to set up the database and test the application.
+
+## 1. Run SQL Commands to Set Up the Database
+
+Before running the app, you need to execute the following SQL commands to set up the required data in the database.
+
+Run the SQL file located at `src/main/resources/pizzaDB-data.sql` in your MySQL database to create and populate the necessary tables.
+
 # Pizza Service - Order Creation API
 
 This API allows users to create an order, including pizzas, custom pizzas with ingredients, and delivery details. The service calculates the total price based on the selected items and applies any promotions available (e.g., 2 for 1, free delivery).
@@ -58,5 +68,6 @@ The response is a JSON object with the following structure:
     "deliveryFree": false
 }
 ```
+
 
 
