@@ -37,3 +37,23 @@ The request body should be a JSON object with the following structure:
     "deliveryAddress": "Av siempre viva numero 123"
 }
 
+### **Response Expected**
+
+The response is a JSON object with the following structure:
+{
+    "orderItemResponse": [
+        {
+            "pizzaName": "Pizza clasica",
+            "quantity": 2
+        },
+        {
+            "pizzaName": "Custom Pizza",
+            "quantity": 3
+        }
+    ],
+    "pizzaQuantity": 5,
+    "totalPrice": 695.0,
+    "deliveryFree": false
+}
+
+
