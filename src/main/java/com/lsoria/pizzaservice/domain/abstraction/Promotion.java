@@ -1,8 +1,8 @@
 package com.lsoria.pizzaservice.domain.abstraction;
 
-import java.time.LocalDate;
+import com.lsoria.pizzaservice.domain.model.Order;
+
 
 public interface Promotion {
-    boolean isApplicable(LocalDate orderDate);
-    double applyDiscount(double total);
+    void apply(Order order);
 }

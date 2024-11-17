@@ -4,7 +4,7 @@ import com.lsoria.pizzaservice.domain.abstraction.Promotion;
 import lombok.*;
 
 import java.time.DayOfWeek;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Builder
@@ -17,15 +17,16 @@ public class FreeDeliveryPromotion implements Promotion {
     private Long id;
     private String name;
     private String description;
-    private DayOfWeek applicableDay;
+    private List<DayOfWeek> applicableDays;
 
     @Override
-    public boolean isApplicable(LocalDate orderDate) {
-        return orderDate.getDayOfWeek().equals(applicableDay);
-    }
-
-    @Override
-    public double applyDiscount(double total) {
-        return total;  // Free delivery, no price discount but free shipping
+    public void apply(Order order) {
+        if (applicableDays.contains(order.getOrderDate().getDayOfWeek())) {
+            if (order.getPromotions() == null) {
+                order.setPromotions(new ArrayList<>());
+            }
+            order.getPromotions().add(this);
+            order.setDeliveryFree(true);
+        }
     }
 }

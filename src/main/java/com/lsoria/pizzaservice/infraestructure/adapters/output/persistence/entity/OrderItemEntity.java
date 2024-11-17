@@ -13,11 +13,15 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class OrderItemEntity {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private OrderEntity order;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private PizzaEntity pizza;
+
     private int quantity;
 }

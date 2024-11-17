@@ -4,6 +4,7 @@ import com.lsoria.pizzaservice.domain.model.*;
 import com.lsoria.pizzaservice.infraestructure.adapters.input.rest.data.request.IngredientRequest;
 import com.lsoria.pizzaservice.infraestructure.adapters.input.rest.data.request.OrderRequest;
 import com.lsoria.pizzaservice.infraestructure.adapters.input.rest.data.request.PizzaRequest;
+import com.lsoria.pizzaservice.infraestructure.adapters.input.rest.data.response.OrderItemResponse;
 import com.lsoria.pizzaservice.infraestructure.adapters.input.rest.data.response.OrderResponse;
 
 import java.util.List;
@@ -12,9 +13,25 @@ import java.util.stream.Collectors;
 public class OrderRestMapper {
 
     public OrderResponse toOrderResponse(Order order) {
+        int pizzaQuantity = order.getOrderItems().stream()
+                .mapToInt(OrderItem::getQuantity)
+                .sum();
+
+        List<OrderItemResponse> orderItemResponses = order.getOrderItems().stream()
+                .map(orderItem -> {
+                    double itemPrice = orderItem.getPizza().calculatePrice() * orderItem.getQuantity();
+                    return new OrderItemResponse(
+                            orderItem.getPizza().getName(),
+                            orderItem.getQuantity()
+                    );
+                })
+                .collect(Collectors.toList());
+
         return OrderResponse.builder()
-                .totalPrice(order.calculateTotal())
-                .quantity(order.getOrderItems().size())
+                .totalPrice(order.calculateTotalPrice())
+                .pizzaQuantity(pizzaQuantity)
+                .orderItemResponse(orderItemResponses)
+                .isDeliveryFree(order.isDeliveryFree())
                 .build();
     }
 

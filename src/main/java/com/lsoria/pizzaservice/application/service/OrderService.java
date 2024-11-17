@@ -1,8 +1,10 @@
 package com.lsoria.pizzaservice.application.service;
 
 import com.lsoria.pizzaservice.application.port.input.OrderUseCase;
+import com.lsoria.pizzaservice.application.port.output.PromotionOutputPort;
 import com.lsoria.pizzaservice.application.service.factory.concrete.CustomPizzaFactory;
 import com.lsoria.pizzaservice.application.service.factory.concrete.PredefinedPizzaFactory;
+import com.lsoria.pizzaservice.domain.abstraction.Promotion;
 import com.lsoria.pizzaservice.domain.model.Order;
 import com.lsoria.pizzaservice.application.port.output.OrderOutputPort;
 import com.lsoria.pizzaservice.domain.model.OrderItem;
@@ -16,6 +18,7 @@ import java.util.List;
 public class OrderService implements OrderUseCase {
 
     private final OrderOutputPort orderOutputPort;
+    private final PromotionOutputPort promotionOutputPort;
     private final PredefinedPizzaFactory predefinedPizzaFactory;
     private final CustomPizzaFactory customPizzaFactory;
 
@@ -29,7 +32,10 @@ public class OrderService implements OrderUseCase {
             orderItems.add(orderItemCompleteData);
         }
 
-        Order orderToSave = new Order(order.getUser(), order.getOrderDate(), orderItems, null);
+        List<Promotion> promotions = this.promotionOutputPort.getPromotions();
+
+        Order orderToSave = new Order(order.getUser(), order.getOrderDate(), orderItems, new ArrayList<>());
+        promotions.forEach(promotion -> promotion.apply(orderToSave));
         return this.orderOutputPort.saveOrder(orderToSave);
     }
 

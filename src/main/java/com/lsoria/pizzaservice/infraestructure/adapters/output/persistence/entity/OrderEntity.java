@@ -15,16 +15,27 @@ import java.util.List;
 @SuperBuilder
 public class OrderEntity {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
+
     @ManyToOne
     private UserEntity user;
+
     private String orderDate;
-    private boolean isDeliveryFree;
-    @OneToMany(mappedBy = "order")
+    private boolean deliveryFree;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItemEntity> orderItems;
-    @ManyToOne
-    private PromotionEntity promotion;
+
+    @ManyToMany
+    @JoinTable(
+            name = "order_promotion",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "promotion_id")
+    )
+    private List<PromotionEntity> promotions;
+
     @OneToOne
     private DeliveryEntity delivery;
 }

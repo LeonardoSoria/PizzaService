@@ -14,7 +14,7 @@ public class Pizza {
     private Long id;
     private String name;
     private boolean isCustom;
-    private Recipe recipe;
+    private Recipe  recipe;
     private List<Ingredient> ingredients;
     private double basePrice;
 
@@ -27,10 +27,8 @@ public class Pizza {
 
     public double calculatePrice() {
         double total = basePrice;
-        if (isCustom) {
-            for (Ingredient ingredient : ingredients) {
-                total += ingredient.getPrice();
-            }
+        for (Ingredient ingredient : ingredients) {
+            total += ingredient.getPrice();
         }
         return total;
     }

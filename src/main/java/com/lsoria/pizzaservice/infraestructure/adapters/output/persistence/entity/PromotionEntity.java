@@ -25,4 +25,7 @@ public class PromotionEntity {
     @ElementCollection
     @Enumerated(EnumType.STRING)
     private List<DayOfWeek> applicableDays;
+
+    @ManyToMany(mappedBy = "promotions")
+    private List<OrderEntity> orders;
 }

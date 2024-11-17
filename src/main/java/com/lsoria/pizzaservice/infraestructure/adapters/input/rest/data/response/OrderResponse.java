@@ -1,7 +1,8 @@
 package com.lsoria.pizzaservice.infraestructure.adapters.input.rest.data.response;
 
-import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
+
+import java.util.List;
 
 @Builder
 @Getter
@@ -10,7 +11,9 @@ import lombok.*;
 @NoArgsConstructor
 public class OrderResponse {
 
-    private int quantity;
+    private List<OrderItemResponse> orderItemResponse;
+    private int pizzaQuantity;
     private double totalPrice;
+    private boolean isDeliveryFree;
 
 }
