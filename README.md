@@ -36,7 +36,7 @@ The request body should be a JSON object with the following structure:
     ],
     "deliveryAddress": "Av siempre viva numero 123"
 }
-```json
+```
 
 ### **Response Expected**
 
@@ -57,6 +57,6 @@ The response is a JSON object with the following structure:
     "totalPrice": 695.0,
     "deliveryFree": false
 }
-```json
+```
 
 
