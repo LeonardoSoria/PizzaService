@@ -1,12 +1,24 @@
 # Project Setup and Testing
 
-To get started with the project, please follow the instructions below to set up the database and test the application.
-
-## 1. Run SQL Commands to Set Up the Database
-
 Before running the app, you need to execute the following SQL commands to set up the required data in the database.
 
 Run the SQL file located at `src/main/resources/pizzaDB-data.sql` in your MySQL database to create and populate the necessary tables.
+
+# Ingredient, User, and Recipe IDs for Testing
+To test the application, you can use the following IDs for the different entities:
+
+## User ID:
+1: Leonardo Soria (email: test@example.com)
+## Ingredient IDs:
+1: Peperoni
+2: Tomate
+3: Queso
+4: Jamon
+5: Piña
+## Recipe IDs:
+1: Pizza clasica con tomate, jamon y queso
+2: Pizza clasica con tomate, jamon, queso y peperoni
+3: Pizza clasica con tomate, jamon, queso y piña
 
 # Pizza Service - Order Creation API
 
